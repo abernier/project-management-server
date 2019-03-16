@@ -66,7 +66,11 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 // ADD CORS SETTINGS HERE TO ALLOW CROSS-ORIGIN INTERACTION:
-
+const cors = require('cors');
+app.use(cors({
+  credentials: true,
+  origin: '*'
+}));
 
 
 // ROUTES MIDDLEWARE STARTS HERE:
@@ -74,5 +78,7 @@ app.locals.title = 'Express - Generated with IronGenerator';
 const index = require('./routes/index');
 app.use('/', index);
 
+app.use('/api', require('./routes/project-routes.js'));
+app.use('/api', require('./routes/task-routes.js'));
 
 module.exports = app;
