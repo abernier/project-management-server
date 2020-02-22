@@ -8,12 +8,20 @@ const Task = require('../models/task-model'); // <== !!!
 
 
 // POST route => to create a new project
-router.post('/projects', (req, res, next)=>{
+router.post('/projects', (req, res, next) => {
+  // Check if logged-in
+  if (!req.user) {
+    res.status(401).json({
+      message: "You need to be logged-in to create a project"
+    });
+    return;
+  }
  
   Project.create({
     title: req.body.title,
     description: req.body.description,
-    tasks: []
+    tasks: [],
+    owner: req.user._id
   })
     .then(response => {
       res.json(response);
