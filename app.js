@@ -9,18 +9,6 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
-
-// WHEN INTRODUCING USERS DO THIS:
-// INSTALL THESE DEPENDENCIES: passport-local, passport, bcryptjs, express-session
-// AND UN-COMMENT OUT FOLLOWING LINES:
-
-// const session       = require('express-session');
-// const passport      = require('passport');
-
-// require('./configs/passport');
-
-// IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
-
 mongoose
   .connect('mongodb://localhost/project-management-server', {useNewUrlParser: true})
   .then(x => {
