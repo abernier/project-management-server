@@ -70,7 +70,7 @@ app.use((err, req, res, next) => {
   // always log the error
   console.error('ERROR', req.method, req.path, err);
 
-  res.json({message: err.message})
+  res.status(500).json({message: err.message})
 });
 
 module.exports = app;
